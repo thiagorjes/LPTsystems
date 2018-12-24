@@ -1,0 +1,42 @@
+@page "{handler?}"
+@model GrandezasModel
+@{
+    ViewData["Title"] = "Gerencie seus Grandezas";
+}
+<div class="text-center">
+    <h1 class="display-4" style="font-weight:bold">Grandezas</h1>
+    
+    <h2>Visualize, Edite e Inicie Grandezas</h2>
+    <p>Grandezas Cadastradas:</p>
+    <div class="form-group box" >  
+        
+        
+        <table class="table table-responsive" style="width:auto">  
+            <tr>  
+                <th>  
+                    Descricao
+                </th>   
+                <th >  
+                    <div >Op&ccedil;&otilde;es</div>
+                </th>  
+                  
+            </tr>  
+  
+            @foreach (var item in GrandezasModel.grandezas)
+            {
+                <tr>  
+                    <td>  
+                        @Html.DisplayFor(modelItem => item.Descricao)  
+                    </td>  
+                    <td > 
+                        <a asp-page="./Grandezas/Edit" class="box" asp-route-id="@item.IdGrandeza" >Editar</a>
+                    </td>  
+                </tr>  
+            }
+            <tr>
+                <td></td><td></td><td></td><td><a asp-page="./Grandezas/Create"  >Novo Grandeza</a></td>
+            </tr>
+        </table>  
+        
+    </div>  
+</div>

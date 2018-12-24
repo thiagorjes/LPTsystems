@@ -1,0 +1,49 @@
+@page "{handler?}"
+@model DeleteModel
+@{
+    ViewData["Title"] = DeleteModel.Page_Title;
+}
+
+@{
+    Layout = "_Layout";
+}
+<h2>Deseja Realmente Remover este Experimento e todos os Dados associados?</h2>  
+<hr />  
+<div class="row">  
+    <div class="col-md-4">  
+        <form method="post">  
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>  
+            <input type="hidden" asp-for="experimento.IdExperimento" />  
+            <div class="form-group">  
+                <label asp-for="experimento.JsonDateIni" class="control-label">Data In&iacute;cio:</label>  
+                <input asp-for="experimento.JsonDateIni" class="form-control" />  
+                <span asp-validation-for="experimento.JsonDateIni" class="text-danger"></span>  
+            </div>  
+            <div class="form-group">  
+                <label asp-for="experimento.JsonDateFim" class="control-label">Data Fim:</label>  
+                <input asp-for="experimento.JsonDateFim" class="form-control" />  
+                <span asp-validation-for="experimento.JsonDateFim" class="text-danger"></span>  
+            </div>  
+            <div class="form-group">  
+                <label asp-for="experimento.Descricao" class="control-label">Descri&ccedil;&atilde;o:</label>  
+                <textarea asp-for="experimento.Descricao" class="form-control" ></textarea>
+                <span asp-validation-for="experimento.Descricao" class="text-danger"></span>  
+            </div>  
+            <div class="form-group">  
+                <label class="control-label">Quantidade de Dados Obtidos:</label>  
+                @{var prod = (int) ViewData["quantidadeDados"];} 
+                @prod
+            </div>  
+            
+            <div class="form-group">  
+                <input type="submit" value="Remover" class="btn btn-default" />  
+            </div>  
+        </form>  
+    </div>  
+</div>  
+<div>  
+    <a asp-page="../experimentos">Cancelar</a>  
+</div>  
+@section Scripts {  
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}  
+} 

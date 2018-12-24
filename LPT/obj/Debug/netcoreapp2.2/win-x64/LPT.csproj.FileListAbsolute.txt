@@ -1,0 +1,17 @@
+C:\Users\thiag\DOTNET\GITHUB\SistemaDeOperacaoDoPlasma\LPT\bin\Debug\netcoreapp2.2\win-x64\hostpolicy.dll
+C:\Users\thiag\DOTNET\GITHUB\SistemaDeOperacaoDoPlasma\LPT\bin\Debug\netcoreapp2.2\win-x64\hostfxr.dll
+C:\Users\thiag\DOTNET\GITHUB\SistemaDeOperacaoDoPlasma\LPT\bin\Debug\netcoreapp2.2\win-x64\LPT.exe
+C:\Users\thiag\DOTNET\GITHUB\SistemaDeOperacaoDoPlasma\LPT\bin\Debug\netcoreapp2.2\win-x64\LPT.deps.json
+C:\Users\thiag\DOTNET\GITHUB\SistemaDeOperacaoDoPlasma\LPT\bin\Debug\netcoreapp2.2\win-x64\LPT.runtimeconfig.json
+C:\Users\thiag\DOTNET\GITHUB\SistemaDeOperacaoDoPlasma\LPT\bin\Debug\netcoreapp2.2\win-x64\LPT.runtimeconfig.dev.json
+C:\Users\thiag\DOTNET\GITHUB\SistemaDeOperacaoDoPlasma\LPT\bin\Debug\netcoreapp2.2\win-x64\LPT.dll
+C:\Users\thiag\DOTNET\GITHUB\SistemaDeOperacaoDoPlasma\LPT\bin\Debug\netcoreapp2.2\win-x64\LPT.pdb
+C:\Users\thiag\DOTNET\GITHUB\SistemaDeOperacaoDoPlasma\LPT\obj\Debug\netcoreapp2.2\win-x64\LPT.csprojAssemblyReference.cache
+C:\Users\thiag\DOTNET\GITHUB\SistemaDeOperacaoDoPlasma\LPT\obj\Debug\netcoreapp2.2\win-x64\LPT.csproj.CoreCompileInputs.cache
+C:\Users\thiag\DOTNET\GITHUB\SistemaDeOperacaoDoPlasma\LPT\obj\Debug\netcoreapp2.2\win-x64\LPT.RazorAssemblyInfo.cache
+C:\Users\thiag\DOTNET\GITHUB\SistemaDeOperacaoDoPlasma\LPT\obj\Debug\netcoreapp2.2\win-x64\LPT.RazorAssemblyInfo.cs
+C:\Users\thiag\DOTNET\GITHUB\SistemaDeOperacaoDoPlasma\LPT\obj\Debug\netcoreapp2.2\win-x64\LPT.AssemblyInfoInputs.cache
+C:\Users\thiag\DOTNET\GITHUB\SistemaDeOperacaoDoPlasma\LPT\obj\Debug\netcoreapp2.2\win-x64\LPT.AssemblyInfo.cs
+C:\Users\thiag\DOTNET\GITHUB\SistemaDeOperacaoDoPlasma\LPT\obj\Debug\netcoreapp2.2\win-x64\LPT.RazorTargetAssemblyInfo.cache
+C:\Users\thiag\DOTNET\GITHUB\SistemaDeOperacaoDoPlasma\LPT\obj\Debug\netcoreapp2.2\win-x64\LPT.dll
+C:\Users\thiag\DOTNET\GITHUB\SistemaDeOperacaoDoPlasma\LPT\obj\Debug\netcoreapp2.2\win-x64\LPT.pdb

@@ -1,0 +1,56 @@
+@page "{handler?}"
+@model ExperimentosModel
+@{
+    ViewData["Title"] = "Gerencie seus Experimentos";
+}
+<div class="text-center">
+    <h1 class="display-4" style="font-weight:bold">Experimentos</h1>
+    
+    <h2>Visualize, Edite e Inicie Experimentos</h2>
+    <p>&Uacute;timos Experimentos:</p>
+    <div class="form-group box" >  
+        
+        
+        <table class="table table-responsive" style="width:auto">  
+            <tr>  
+                <th>  
+                    Descricao
+                </th>  
+                <th>  
+                    Data Inicio  
+                </th>  
+                <th>  
+                    Data Fim
+                </th>  
+                <th >  
+                    <div >Op&ccedil;&otilde;es</div>
+                </th>  
+                  
+            </tr>  
+  
+            @foreach (var item in ExperimentosModel.experimentos)
+            {
+                <tr>  
+                    <td>  
+                        @Html.DisplayFor(modelItem => item.Descricao)  
+                    </td>  
+                    <td>  
+                        @Html.DisplayFor(modelItem => item.DataInicio)  
+                    </td>  
+                    <td>  
+                        @Html.DisplayFor(modelItem => item.DataFim)  
+                    </td>  
+                    <td >  
+                        <a asp-page="./Experimentos/Details" class="box" asp-route-id="@item.IdExperimento" >Detalhes</a>|
+                        <a asp-page="./Experimentos/Edit" class="box" asp-route-id="@item.IdExperimento" >Editar</a>|
+                        <a asp-page="./Experimentos/Delete" class="box" asp-route-id="@item.IdExperimento" >Remover</a>
+                    </td>  
+                </tr>  
+            }
+            <tr>
+                <td></td><td></td><td></td><td><a asp-page="./Experimentos/Create"  >Novo Experimento</a></td>
+            </tr>
+        </table>  
+        
+    </div>  
+</div>

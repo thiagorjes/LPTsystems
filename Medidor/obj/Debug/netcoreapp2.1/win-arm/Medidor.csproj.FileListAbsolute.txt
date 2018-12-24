@@ -1,0 +1,17 @@
+C:\Users\thiag\DOTNET\GITHUB\SistemaDeOperacaoDoPlasma\Medidor\bin\Debug\netcoreapp2.1\win-arm\hostpolicy.dll
+C:\Users\thiag\DOTNET\GITHUB\SistemaDeOperacaoDoPlasma\Medidor\bin\Debug\netcoreapp2.1\win-arm\hostfxr.dll
+C:\Users\thiag\DOTNET\GITHUB\SistemaDeOperacaoDoPlasma\Medidor\bin\Debug\netcoreapp2.1\win-arm\Medidor.exe
+C:\Users\thiag\DOTNET\GITHUB\SistemaDeOperacaoDoPlasma\Medidor\bin\Debug\netcoreapp2.1\win-arm\Medidor.deps.json
+C:\Users\thiag\DOTNET\GITHUB\SistemaDeOperacaoDoPlasma\Medidor\bin\Debug\netcoreapp2.1\win-arm\Medidor.runtimeconfig.json
+C:\Users\thiag\DOTNET\GITHUB\SistemaDeOperacaoDoPlasma\Medidor\bin\Debug\netcoreapp2.1\win-arm\Medidor.runtimeconfig.dev.json
+C:\Users\thiag\DOTNET\GITHUB\SistemaDeOperacaoDoPlasma\Medidor\bin\Debug\netcoreapp2.1\win-arm\Medidor.dll
+C:\Users\thiag\DOTNET\GITHUB\SistemaDeOperacaoDoPlasma\Medidor\bin\Debug\netcoreapp2.1\win-arm\Medidor.pdb
+C:\Users\thiag\DOTNET\GITHUB\SistemaDeOperacaoDoPlasma\Medidor\obj\Debug\netcoreapp2.1\win-arm\Medidor.csprojAssemblyReference.cache
+C:\Users\thiag\DOTNET\GITHUB\SistemaDeOperacaoDoPlasma\Medidor\obj\Debug\netcoreapp2.1\win-arm\Medidor.csproj.CoreCompileInputs.cache
+C:\Users\thiag\DOTNET\GITHUB\SistemaDeOperacaoDoPlasma\Medidor\obj\Debug\netcoreapp2.1\win-arm\Medidor.RazorAssemblyInfo.cache
+C:\Users\thiag\DOTNET\GITHUB\SistemaDeOperacaoDoPlasma\Medidor\obj\Debug\netcoreapp2.1\win-arm\Medidor.RazorAssemblyInfo.cs
+C:\Users\thiag\DOTNET\GITHUB\SistemaDeOperacaoDoPlasma\Medidor\obj\Debug\netcoreapp2.1\win-arm\Medidor.AssemblyInfoInputs.cache
+C:\Users\thiag\DOTNET\GITHUB\SistemaDeOperacaoDoPlasma\Medidor\obj\Debug\netcoreapp2.1\win-arm\Medidor.AssemblyInfo.cs
+C:\Users\thiag\DOTNET\GITHUB\SistemaDeOperacaoDoPlasma\Medidor\obj\Debug\netcoreapp2.1\win-arm\Medidor.RazorTargetAssemblyInfo.cache
+C:\Users\thiag\DOTNET\GITHUB\SistemaDeOperacaoDoPlasma\Medidor\obj\Debug\netcoreapp2.1\win-arm\Medidor.dll
+C:\Users\thiag\DOTNET\GITHUB\SistemaDeOperacaoDoPlasma\Medidor\obj\Debug\netcoreapp2.1\win-arm\Medidor.pdb

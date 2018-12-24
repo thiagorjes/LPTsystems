@@ -1,0 +1,14 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+    <div class="text-center"><h1 class="display-4" style="font-weight:bold">Bem vindo ao CtrlP </h1>
+    
+    <h2>Controle, Operação e Diagnósticos em Tempo Real para a Tocha de Plasma</h2>
+    <p>Escolha uma das opções abaixo:</p>
+
+    <div class="box"><a class="box-content navbar-brand" asp-page="Medidores"><p>Medidores</p></a></div><div class="box"><a class="box-content navbar-brand" asp-page="Experimentos"><p>Experimentos</p></a></div><div class="box"><a class="box-content navbar-brand" asp-page="Grandezas"><p>Unidades de Medida</p></a></div>
+</div>
