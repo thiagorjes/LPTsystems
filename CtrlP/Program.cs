@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
@@ -15,6 +16,15 @@ namespace CtrlP
         public static string Baseurl = "http://10.10.10.211:2005";
         public static void Main(string[] args)
         {
+             var nfInfo = new System.Globalization.CultureInfo("en-US", false)
+            {
+                NumberFormat =
+                {
+                    NumberDecimalSeparator = "."
+                }
+            };
+            Thread.CurrentThread.CurrentCulture = nfInfo;
+            Thread.CurrentThread.CurrentUICulture = nfInfo;
             //System.Diagnostics.Process.Start(@"C:\Users\thiag\DOTNET\GITHUB\SistemaDeOperacaoDoPlasma\LPT\bin\Debug\netcoreapp2.2\win-x64\LPT.exe","http://10.10.10.211:2005");
             CreateWebHostBuilder(args).Build().Run();
         }

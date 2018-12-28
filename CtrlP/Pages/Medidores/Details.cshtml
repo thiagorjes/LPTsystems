@@ -1,0 +1,76 @@
+@page "{handler?}"
+@model CtrlP.Pages.Medidores.DetailsModel
+@{
+    ViewData["Title"] = DetailsModel.Page_Title;
+}
+
+@{
+    Layout = "_Layout";
+}
+<h2>Detalhes do Medidor: </h2>  
+<hr />  
+<div class="row">  
+    <div class="col-md-4">  
+        <form method="post">  
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>  
+            <div class="form-group">  
+                <label asp-for="medidor.HWIP" class="control-label">Url do Medidor:</label>  
+                <input asp-for="medidor.HWIP" class="form-control" />  
+                <span asp-validation-for="medidor.HWIP" class="text-danger"></span>  
+            </div>  
+            <div class="form-group">  
+                <label asp-for="medidor.HWID" class="control-label">Identificacao do Medidor:</label>  
+                <input asp-for="medidor.HWID" class="form-control" />  
+                <span asp-validation-for="medidor.HWID" class="text-danger"></span>  
+            </div>  
+            <div class="form-group">  
+                <label asp-for="medidor.ServersIP" class="control-label">Url de Salvamento:</label>  
+                <input asp-for="medidor.ServersIP" class="form-control" />
+                <span asp-validation-for="medidor.ServersIP" class="text-danger"></span>  
+            </div>  
+            <div class="form-group">  
+                <label for="parametros" class="control-label">Parametros de Calibração:</label>
+                <div name="parametros"id="parametros" >
+                    
+                @for (int i = 0; i < Model.medidor.CalibrationParameters.Count(); i++)
+                {  
+                    <div style="display: inline-block; width:auto;">
+                        @if(Model.medidor.CalibrationParameters.Count()>0)
+                        { 
+                            @if (i>0) 
+                            { 
+                                @Html.Raw("+");
+                                <input asp-for="medidor.CalibrationParameters[i]"  style="text-align:right;max-width:50px;display:inline-block; border-color:transparent; "  type="number"/>  
+                                @Html.Raw("X<sup>"+i+"</sup>");
+                            }
+                            else{
+                                <input asp-for="medidor.CalibrationParameters[i]"  style="text-align:right;max-width:50px;display:inline-block; border-color:transparent; "  type="number"/>  
+                            }
+                        }
+                        else
+                        {
+                            <input asp-for="medidor.CalibrationParameters[i]"  style="text-align:right;max-width:50px;display:inline-block; border-color:transparent; " type="number"/>  
+                        }
+                    </div>
+                }
+                </div>
+            </div>  
+            <div class="form-group">  
+                <label asp-for="medidor.OperationType" class="control-label">Operando para:</label>  
+                @Html.DropDownListFor(m=>m.medidor.OperationType,DetailsModel.listaGrandezas,"Grandeza",new { @class = "form-control" })
+                <span asp-validation-for="medidor.OperationType" class="text-danger"></span>  
+            </div>  
+            <div class="form-group">  
+                <label asp-for="medidor.State" class="control-label">Estado de Operação:</label>  
+                @Html.DropDownListFor(m=>m.medidor.State,DetailsModel.listaOpStates,"Estado",new { @class = "form-control" })
+                <span asp-validation-for="medidor.State" class="text-danger"></span>  
+            </div>   
+        </form>  
+    </div>  
+</div>  
+<div>  
+    <a asp-page="../medidores">Voltar a Lista</a>  
+</div>  
+@section Scripts {  
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}  
+} 

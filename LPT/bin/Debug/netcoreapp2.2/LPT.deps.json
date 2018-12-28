@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v2.2",
-    "signature": "2024bf8dedc3209b7e7c166d3c7c3f8eb38a259e"
+    "signature": "ad2de7ea54105a0402f469e0b3b54eb9ecd80101"
   },
   "compilationOptions": {
     "defines": [
@@ -28,9 +28,11 @@
           "Microsoft.AspNetCore.Razor.Design": "2.2.0",
           "Microsoft.EntityFrameworkCore": "2.2.0",
           "Microsoft.EntityFrameworkCore.Design": "2.2.0",
+          "Microsoft.Extensions.Configuration": "2.2.0",
           "Microsoft.Extensions.Configuration.UserSecrets": "2.2.0",
           "Microsoft.NETCore.App": "2.2.0",
           "MySql.Data.EntityFrameworkCore": "8.0.13",
+          "Microsoft.AspNetCore.SignalR.Client": "1.1.0",
           "Swashbuckle.AspNetCore": "4.0.1"
         },
         "runtime": {
@@ -52,6 +54,54 @@
         },
         "compile": {
           "lib/netstandard1.0/Google.Protobuf.dll": {}
+        }
+      },
+      "Microsoft.AspNetCore.Http.Connections.Client/1.1.0": {
+        "dependencies": {
+          "Microsoft.AspNetCore.Http.Connections.Common": "1.1.0",
+          "Microsoft.Extensions.Logging.Abstractions": "2.2.0"
+        },
+        "runtime": {
+          "lib/netcoreapp2.2/Microsoft.AspNetCore.Http.Connections.Client.dll": {
+            "assemblyVersion": "1.1.0.0",
+            "fileVersion": "1.1.0.18316"
+          }
+        },
+        "compile": {
+          "lib/netcoreapp2.2/Microsoft.AspNetCore.Http.Connections.Client.dll": {}
+        }
+      },
+      "Microsoft.AspNetCore.SignalR.Client/1.1.0": {
+        "dependencies": {
+          "Microsoft.AspNetCore.Http.Connections.Client": "1.1.0",
+          "Microsoft.AspNetCore.SignalR.Client.Core": "1.1.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.AspNetCore.SignalR.Client.dll": {
+            "assemblyVersion": "1.1.0.0",
+            "fileVersion": "1.1.0.18316"
+          }
+        },
+        "compile": {
+          "lib/netstandard2.0/Microsoft.AspNetCore.SignalR.Client.dll": {}
+        }
+      },
+      "Microsoft.AspNetCore.SignalR.Client.Core/1.1.0": {
+        "dependencies": {
+          "Microsoft.AspNetCore.SignalR.Common": "1.1.0",
+          "Microsoft.AspNetCore.SignalR.Protocols.Json": "1.1.0",
+          "Microsoft.Extensions.DependencyInjection": "2.2.0",
+          "Microsoft.Extensions.Logging": "2.2.0",
+          "System.Threading.Channels": "4.5.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.AspNetCore.SignalR.Client.Core.dll": {
+            "assemblyVersion": "1.1.0.0",
+            "fileVersion": "1.1.0.18316"
+          }
+        },
+        "compile": {
+          "lib/netstandard2.0/Microsoft.AspNetCore.SignalR.Client.Core.dll": {}
         }
       },
       "Microsoft.NETCore.App/2.2.0": {
@@ -3382,6 +3432,27 @@
       "sha512": "sha512-j/gbpRZ68sgvdi/vXI39Cj/jWG4d1dtDqfWbkjC9dErNWu/dFcIlq1LIgLscea+llZ6nzm06wz/JGziOegAL7Q==",
       "path": "google.protobuf/3.5.1",
       "hashPath": "google.protobuf.3.5.1.nupkg.sha512"
+    },
+    "Microsoft.AspNetCore.Http.Connections.Client/1.1.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Gd6ula8vhp9VwAlagKGvijO1e1n3mLPJVlF2nmuZoVg5fn3ckXH3KXsZ2nEOV5h6GQq+QuR9rlTpZzt/PVx+5g==",
+      "path": "microsoft.aspnetcore.http.connections.client/1.1.0",
+      "hashPath": "microsoft.aspnetcore.http.connections.client.1.1.0.nupkg.sha512"
+    },
+    "Microsoft.AspNetCore.SignalR.Client/1.1.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Z3W5AqFHib4BV0AdZbeM1+f3esISArklGbptKxKm7n0IVlAllHmvGB8ItrxENtLx5Wf12976QheqnQsnB5Jghw==",
+      "path": "microsoft.aspnetcore.signalr.client/1.1.0",
+      "hashPath": "microsoft.aspnetcore.signalr.client.1.1.0.nupkg.sha512"
+    },
+    "Microsoft.AspNetCore.SignalR.Client.Core/1.1.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-9FbQoZagonFPUvzn/G1uUntv0F0uYmX4pLFuOH7CSBGjMb3J9MVjnr9QRTLP1EOhxUmM1edubplY9ZiJHAOUBw==",
+      "path": "microsoft.aspnetcore.signalr.client.core/1.1.0",
+      "hashPath": "microsoft.aspnetcore.signalr.client.core.1.1.0.nupkg.sha512"
     },
     "Microsoft.NETCore.App/2.2.0": {
       "type": "package",

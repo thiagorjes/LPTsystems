@@ -16,12 +16,12 @@
             <input type="hidden" asp-for="experimento.IdExperimento" />  
             <div class="form-group">  
                 <label asp-for="experimento.JsonDateIni" class="control-label">Data In&iacute;cio:</label>  
-                <input asp-for="experimento.JsonDateIni" class="form-control" />  
+                <input asp-for="experimento.JsonDateIni" class="form-control" type="datetime-local" />  
                 <span asp-validation-for="experimento.JsonDateIni" class="text-danger"></span>  
             </div>  
             <div class="form-group">  
                 <label asp-for="experimento.JsonDateFim" class="control-label">Data Fim:</label>  
-                <input asp-for="experimento.JsonDateFim" class="form-control" />  
+                <input asp-for="experimento.JsonDateFim" class="form-control" type="datetime-local" />  
                 <span asp-validation-for="experimento.JsonDateFim" class="text-danger"></span>  
             </div>  
             <div class="form-group">  

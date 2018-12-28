@@ -37,3 +37,7 @@ C:\Users\thiag\DOTNET\GITHUB\SistemaDeOperacaoDoPlasma\CtrlP\bin\Debug\netcoreap
 C:\Users\thiag\DOTNET\GITHUB\SistemaDeOperacaoDoPlasma\CtrlP\bin\Debug\netcoreapp2.2\CtrlP.Views.pdb
 C:\Users\thiag\DOTNET\GITHUB\SistemaDeOperacaoDoPlasma\CtrlP\obj\Debug\netcoreapp2.2\CtrlP.Views.pdb
 C:\Users\thiag\DOTNET\GITHUB\SistemaDeOperacaoDoPlasma\CtrlP\obj\Debug\netcoreapp2.2\CtrlP.csproj.CopyComplete
+C:\Users\thiag\DOTNET\GITHUB\SistemaDeOperacaoDoPlasma\CtrlP\obj\Debug\netcoreapp2.2\Razor\Pages\Medidores\Details.g.cshtml.cs
+C:\Users\thiag\DOTNET\GITHUB\SistemaDeOperacaoDoPlasma\CtrlP\obj\Debug\netcoreapp2.2\Razor\Pages\Medidores\Edit.g.cshtml.cs
+C:\Users\thiag\DOTNET\GITHUB\SistemaDeOperacaoDoPlasma\CtrlP\obj\Debug\netcoreapp2.2\Razor\Pages\formbind.g.cshtml.cs
+C:\Users\thiag\DOTNET\GITHUB\SistemaDeOperacaoDoPlasma\CtrlP\obj\Debug\netcoreapp2.2\Razor\Pages\ReadyGo.g.cshtml.cs

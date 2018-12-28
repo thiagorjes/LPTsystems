@@ -1,5 +1,5 @@
-@page
-@model MedidorModel
+@page "{handler?}"
+@model MedidoresModel
 @{
     ViewData["Title"] = "Gerenciar Medidores";
 }
@@ -9,5 +9,48 @@
     
     <h2>Visualize, Edite e Adicione Medidores</h2>
     <p>Medidores Detectados</p>
-    Aqui vem a lista de medidores detectados na resde, a rotina deve ser criada em Medidor.cshtml.cs
+     <table class="table table-responsive" style="width:auto">  
+            <tr>  
+                <th>  
+                    Medidor
+                </th>  
+                <th>  
+                    IP
+                </th>  
+                <th>  
+                    Tipo
+                </th>  
+                <th>  
+                    Estado
+                </th>  
+                <th >  
+                    <div >Op&ccedil;&otilde;es</div>
+                </th>  
+                  
+            </tr>  
+  
+            @foreach (var item in MedidoresModel.Medidores)
+            {
+                <tr>  
+                    <td>  
+                        @Html.DisplayFor(modelItem => item.HWID)  
+                    </td>  
+                    <td>  
+                        @Html.DisplayFor(modelItem => item.HWIP)  
+                    </td>  
+                    <td>  
+                        @Html.DisplayFor(modelItem => item.OperationType)  
+                    </td>  
+                        @Html.DisplayFor(modelItem => item.State)
+                    <td >  
+                        <a asp-page="./Medidores/Details" class="box" asp-route-HWIP="@item.HWIP" >Detalhes</a>|
+                        <a asp-page="./Medidores/Edit" class="box" asp-route-HWIP="@item.HWIP" >Editar</a>|
+                        <a asp-page="./Medidores/Use" class="box" asp-route-HWIP="@item.HWIP" >Usar</a>
+                    </td>  
+                </tr>  
+            }
+            <tr>
+                <td></td><td></td><td></td><td><a asp-page="./Experimentos/Create"  >Novo Experimento</a></td>
+            </tr>
+        </table>  
 </div>

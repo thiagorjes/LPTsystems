@@ -33,6 +33,9 @@ namespace Medidor.Services
             try
             {
                 OpState = (OperationState) newObject;
+                SensorSettings temp = (SensorSettings)Program.sensorSettings;
+                temp.State=OpState.State;
+                Program.sensorSettingsRepo.Update(temp);
                 return OpState;
             }
             catch(Exception ex)

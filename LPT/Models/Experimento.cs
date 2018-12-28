@@ -15,6 +15,7 @@ namespace LPT.Models
         public string Descricao { get; set; }
         public DateTime DataInicio { get; set; }
         public DateTime? DataFim { get; set; }
+        public int VolumeDeDados { get; set; }
 
         public virtual ICollection<DadoColetado> DadoColetado { get; set; }
         public virtual ICollection<MedidorExperimento> MedidorExperimento { get; set; }

@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.Extensions.Configuration;
 
 namespace LPT.Models
 {
@@ -24,8 +25,7 @@ namespace LPT.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseMySQL("server=10.10.10.211;port=3306;user=root;password=godz3Ufes:@;database=LPT");
+                optionsBuilder.UseMySQL(Program.conexao);
             }
         }
 
@@ -100,6 +100,11 @@ namespace LPT.Models
                     .IsRequired()
                     .HasColumnName("descricao")
                     .HasColumnType("longtext");
+
+                entity.Property(e => e.VolumeDeDados)
+                    .HasColumnName("volumeDeDados")
+                    .HasColumnType("int(11)")
+                    .HasDefaultValueSql("0");
             });
 
             modelBuilder.Entity<Grandeza>(entity =>

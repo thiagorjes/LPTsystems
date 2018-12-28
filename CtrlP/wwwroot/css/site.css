@@ -72,16 +72,18 @@ body {
 }
 .box-content p{
   margin: 0px auto;
+  overflow-wrap: break-word;
 }
 .box-content {
   display: flex;
   flex-wrap: wrap;
-  width: 300px;
-  height: 300px;
+  width: 100px;
+  height: 100px;
   box-shadow: 0px 0.25rem .75rem gray;
   border: 1px lightgray solid;
   margin: 0px auto;
   align-content: center;
+  padding: 3px;
 }
 
 label, input { display:block; }

@@ -1,0 +1,51 @@
+@page
+@model ReadyGoModel
+@{
+    ViewData["Title"] = "Plasma On-Line";
+}
+<h2>Valores ao vivo... ou quase </h2>  
+<hr />  
+<!--<div class="container">
+    <div class="row">&nbsp;</div>
+    <div class="row">
+        <div class="col-6">&nbsp;</div>
+        <div class="col-6">
+            Medidor..........<input type="text" id="medidor" />
+            <br />
+            TipoMedido...<input type="text" id="tipoMedida" />
+            <br />
+            ValorLido...<input type="text" id="valorLido" />
+            <input type="button" id="sendButton" value="Send Message" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <hr />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6">&nbsp;</div>
+        <div class="col-6">
+            <ul id="messagesList"></ul>
+        </div>
+    </div>
+</div>-->
+@foreach (var item in MedidoresModel.Medidores)
+{
+    <div class="row">  
+        <div class="col-md-10">  
+            <div class="box-content" id="@item.HWID">  
+                <label  >@item.HWID</label>  
+                <input  value="" style="border-color:transparent;background-color:transparent;"> 
+            </div>
+        </div>  
+    </div> 
+}
+
+ 
+<div>  
+    <a asp-page="../">Voltar a Home Page</a>  
+</div>
+
+<script src="~/lib/signalr/dist/browser/signalr.js"></script>
+<script src="~/js/chat.js"></script>

@@ -11,7 +11,7 @@
             "preLaunchTask": "build",
             "program": "${workspaceFolder}/bin/Debug/netcoreapp2.1/Medidor.dll",
             "args": ["http://localhost:1001"],
-            "console": "externalTerminal",
+            "console": "internalConsole",
             "cwd": "${workspaceFolder}",
             "stopAtEntry": false,
             "internalConsoleOptions": "openOnSessionStart",

@@ -35,10 +35,13 @@
                         @Html.DisplayFor(modelItem => item.Descricao)  
                     </td>  
                     <td>  
-                        @Html.DisplayFor(modelItem => item.DataInicio)  
+                        <input type="datetime-local" asp-for="@item.JsonDateIni" style="border-color:transparent;" />
                     </td>  
                     <td>  
-                        @Html.DisplayFor(modelItem => item.DataFim)  
+                         @if(item.JsonDateFim != null){
+                             <input type=datetime-local asp-for="@item.JsonDateFim" style="border-color:transparent;" />
+                         }
+
                     </td>  
                     <td >  
                         <a asp-page="./Experimentos/Details" class="box" asp-route-id="@item.IdExperimento" >Detalhes</a>|

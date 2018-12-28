@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using LPT.Interfaces;
 using LPT.Models;
+using Microsoft.AspNetCore.SignalR.Client;
 
 namespace LPT.Services
 {
@@ -30,7 +31,27 @@ namespace LPT.Services
             try
             {
                 DadoColetado r = (context.DadoColetado.Add((DadoColetado)p)).Entity;
-                context.SaveChanges();
+                context.SaveChanges();                
+                Program.connection.StartAsync().ContinueWith(task => 
+                {
+                    if (task.IsFaulted)
+                    {
+                        Console.WriteLine("There was an error opening the connection:{0}", task.Exception.GetBaseException());
+                    }
+                    else
+                    {
+                        string valorLido = ((DadoColetado)p).ValorLido.ToString();
+                        string medidor = ((DadoColetado)p).Hwid;
+                        string tipoMedida = ((Grandeza)new GrandezaRepository(new LPTContext()).Read(((DadoColetado)p).TipoDeGrandeza)).Descricao;
+                            Program.connection.InvokeAsync<string>("SendMessage", medidor,tipoMedida, valorLido).ContinueWith(task1 => {
+                                if (task1.IsFaulted)
+                                {
+                                    Console.WriteLine("There was an error calling send: {0}", task1.Exception.GetBaseException());
+                                }
+                            });
+                    }
+                }).Wait();
+                Program.connection.StopAsync();
                 return r;
             }
             catch(Exception ex)

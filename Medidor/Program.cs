@@ -25,7 +25,7 @@ namespace Medidor
         public static FileStream settingsConf;
         public static SensorSettingsRepository sensorSettingsRepo = new SensorSettingsRepository();
         public static OperationStateRepository operationStateRepo = new OperationStateRepository(0);
-        public static string DadoLido = "";
+        public static string DadoLido = "0";
         public static Thread longThread = new Thread(() => EnviaDados());
         private static readonly WebClient client = new WebClient();        
         public static string TipoGrandeza = "";
@@ -35,10 +35,12 @@ namespace Medidor
             try
             {
                 settingsConf = File.Open("settings.conf",FileMode.OpenOrCreate);
+                StreamReader reader = new StreamReader(settingsConf);
+                string jsonstring = reader.ReadToEnd();
                 sensorSettings = new SensorSettings();           
-                DataContractJsonSerializer tempser = new DataContractJsonSerializer(typeof(SensorSettings));
-                sensorSettings = tempser.ReadObject(settingsConf) as SensorSettings;
-
+                sensorSettings =(SensorSettings) JsonConvert.DeserializeObject(jsonstring,typeof(SensorSettings));
+                sensorSettings.State=0;
+                operationStateRepo.Update(new OperationState ( ){State=0});
                 if(args[0].Contains("http://")){
                     endereco = args[0];
                 }
@@ -50,6 +52,7 @@ namespace Medidor
             {
                 endereco = "http://localhost:1000";
                 sensorSettings.OperationType=1;
+                sensorSettings.State = 0;
                 sensorSettings.ServersIP="http://localhost:2005";
                 sensorSettings.HWIP=endereco;
                 System.Console.Write(ex.Message);
@@ -69,7 +72,7 @@ namespace Medidor
                 //simula a leitura dos dados a cada 1000 milisegundos
                 Thread.Sleep(1000);
                 
-                switch(((OperationState)operationStateRepo.Read()).State)
+                switch(((SensorSettings)sensorSettingsRepo.Read()).State)
                 {
                     //verifica o estado de operacao do medidor
                     case 0://offline - standby
@@ -126,7 +129,7 @@ namespace Medidor
                         temp.Hwid = ((SensorSettings)sensorSettingsRepo.Read()).HWID;
                         temp.ValorLido = Int32.Parse(DadoLido);
                         temp.IdDadoColetado=0;
-                        temp.TipoDeGrandeza = 5 ;//raw;
+                        temp.TipoDeGrandeza = ((SensorSettings)sensorSettingsRepo.Read()).OperationType;
 
                         client.Headers["Content-type"] = "application/json";
                         MemoryStream ms = new MemoryStream();

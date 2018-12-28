@@ -19,7 +19,7 @@ namespace Medidor.Models
             A lista de parâmetros de calibração: contém os parâmetros de calibração usados como coeficientes no polinômio de regressão linear que converte os dados  "RAW " em quantidades físicas.
         O comprimento da lista especifica a ordem de polinômio. Os elementos da lista são os coeficientes. O N-ésimo elemento é o coeficiente da ordem N. O elemento 0-ésimo é o coeficiente de ordem zero
          */
-        public IEnumerable<float> CalibrationParameters {get;set;}
+        public List<double> CalibrationParameters {get;set;}
         
         /*
             can be 1 - "flow rate", in Hertz due to the nature of the leakage meter used
@@ -28,6 +28,7 @@ namespace Medidor.Models
             pode ser 1 - vazao, medida em Hertz devido a natureza do medidor de vazao utilizado
             pode ser 2 - tensao, captada em ponto flutuante devido a natureza do medidor de tensao do arduino que estou tentando simular
          */
+
         public int  OperationType { get; set; }
 
         /*
@@ -41,5 +42,10 @@ namespace Medidor.Models
             Hardware IP - Armazena o enderço IP do Arduino obtido via DHCP
          */
         public string HWIP { get; set; }
+         /*
+            State - The operation state of sensor: on(1), off(0) or calibrate(2)
+            State - O estado de operacao do sensor: on(1), off(0) or calibrate(2)
+         */
+         public int State { get; set; }
     }
 }

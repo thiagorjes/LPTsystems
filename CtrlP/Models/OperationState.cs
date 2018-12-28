@@ -1,5 +1,9 @@
+using System.Runtime.Serialization;
+using System.Globalization;
+
 namespace CtrlP.Models
 {
+    [DataContract(Name="operationState")]
     public class OperationState
     {
         /*  
@@ -21,6 +25,7 @@ namespace CtrlP.Models
             para calibrar o medidor, coloque em calibrate (2)
 
         */
+        [DataMember(Name="state")]
         public int State { get; set; }
     }
 }

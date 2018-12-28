@@ -29,10 +29,11 @@ namespace LPT.Services
         public object Create(object p){
             try
             {
-                /**
-                    Posteriormente, sempre que um novo experimento for criado, todos os experimentos com dataFim em branco serão "settados" para "now()"
-                    Desta forma evitamos que mais de um experimento fique "ativo"
-                 */
+                foreach (var item in (from t in context.Experimento where t.DataFim == null && t.DataInicio!=((Experimento)p).DataInicio select t).ToList<Experimento>())
+                {
+                    item.DataFim = DateTime.Now;
+                    context.Entry(item).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+                }
                 Experimento r = (context.Experimento.Add((Experimento)p)).Entity;
                 context.SaveChanges();
                 Program.experimentoAtivo = r.IdExperimento;
@@ -56,6 +57,20 @@ namespace LPT.Services
                 return null;
             }
         }
+
+        public object ReadLast(){
+            try
+            {
+                Experimento r = (from p in context.Experimento where p.DataFim == null orderby p.IdExperimento descending select p).FirstOrDefault<Experimento>();
+                return r;
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return null;
+            }
+        }
+
         public object Update(int IdExperimento,object newObject ){
             try
             {

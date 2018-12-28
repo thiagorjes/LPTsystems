@@ -42,7 +42,7 @@ namespace CtrlP.Pages.Experimentos
                 MemoryStream ms = new MemoryStream(Encoding.Unicode.GetBytes(s));
                 DataContractJsonSerializer ser = new DataContractJsonSerializer(typeof(Experimento));
                 experimento = ser.ReadObject(ms) as Experimento;
-                ViewData["quantidadeDados"] = (experimento.DadoColetado!=null?experimento.DadoColetado.Count():0);
+                ViewData["quantidadeDados"] = experimento.VolumeDeDados;
                 data.Close ();
                 reader.Close ();
             }

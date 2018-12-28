@@ -47,6 +47,8 @@ namespace CtrlP.Models
                     return null;
             }
         }
+        [DataMember(Name="volumeDeDados")]
+        public int VolumeDeDados { get; set; }
         public virtual ICollection<DadoColetado> DadoColetado { get; set; }
         public virtual ICollection<MedidorExperimento> MedidorExperimento { get; set; }
     }

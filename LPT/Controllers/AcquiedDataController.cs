@@ -17,7 +17,7 @@ namespace LPT.Controllers
         [HttpPost]
         public IActionResult Create([FromBody]DadoColetado t){
             try {
-                t.Experimento = 3;//Program.experimentoAtivo; // Os dados sao recebidos e o idExperimento é "settado" com base no experimento ativo
+                t.Experimento = Program.experimentoAtivo; // Os dados sao recebidos e o idExperimento é "settado" com base no experimento ativo
                 var c = repositorio.Create(t);
                 Console.WriteLine("ok ");
                 return this.Ok(c);
