@@ -5,11 +5,10 @@
 }
 
 <div class="text-center">
-    <div class="text-center"><h1 class="display-4" style="font-weight:bold">Medidores</h1>
-    
-    <h2>Visualize, Edite e Adicione Medidores</h2>
-    <p>Medidores Detectados</p>
-     <table class="table table-responsive" style="width:auto">  
+    <div class="text-center">
+        <h1 class="display-4" style="font-weight:bold">Medidores</h1>
+        <h2>Visualize, Edite e Adicione Medidores</h2>
+        <table class="table table-responsive" style="width:auto" >
             <tr>  
                 <th>  
                     Medidor
@@ -26,9 +25,7 @@
                 <th >  
                     <div >Op&ccedil;&otilde;es</div>
                 </th>  
-                  
             </tr>  
-  
             @foreach (var item in MedidoresModel.Medidores)
             {
                 <tr>  
@@ -39,18 +36,37 @@
                         @Html.DisplayFor(modelItem => item.HWIP)  
                     </td>  
                     <td>  
-                        @Html.DisplayFor(modelItem => item.OperationType)  
+                        @MedidoresModel.grandezas.ElementAt(item.OperationType-1).Descricao
                     </td>  
-                        @Html.DisplayFor(modelItem => item.State)
                     <td >  
-                        <a asp-page="./Medidores/Details" class="box" asp-route-HWIP="@item.HWIP" >Detalhes</a>|
-                        <a asp-page="./Medidores/Edit" class="box" asp-route-HWIP="@item.HWIP" >Editar</a>|
-                        <a asp-page="./Medidores/Use" class="box" asp-route-HWIP="@item.HWIP" >Usar</a>
+                        @MedidoresModel.opstates.ElementAt(item.State)
+                    </td>  
+                    <td >  
+                        <a asp-page="./Medidores/Details" class="box" asp-route-idx="@MedidoresModel.Medidores.IndexOf(item)" >Detalhes</a>|
+                        <a asp-page="./Medidores/Edit" class="box" asp-route-idx="@MedidoresModel.Medidores.IndexOf(item)" >Editar</a>|
+                        <a asp-page="./Medidores/Use" class="box" asp-route-idx="@MedidoresModel.Medidores.IndexOf(item)" >Usar</a>
                     </td>  
                 </tr>  
             }
             <tr>
-                <td></td><td></td><td></td><td><a asp-page="./Experimentos/Create"  >Novo Experimento</a></td>
+                <td>
+
+                </td>
+                <td>
+
+                </td>
+                <td>
+                    
+                </td>
+                <td>
+                    
+                </td>
+                <td>
+                    <form method="post">
+                        <input type="submit" class="btn btn-default" asp-page-handler="UpdateMedidores" value="Atualizar"/>
+                    </form>
+                </td>
             </tr>
         </table>  
+    </div>
 </div>

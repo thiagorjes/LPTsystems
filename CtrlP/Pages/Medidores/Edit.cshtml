@@ -35,16 +35,16 @@
                             @if (i>0) 
                             { 
                                 @Html.Raw("+");
-                                <input asp-for="medidor.CalibrationParameters[i]"  style="text-align:right;max-width:50px;display:inline-block; border-color:transparent; "  type="number"/>  
+                                <input asp-for="medidor.CalibrationParameters[i]"  style="text-align:right;max-width:50px;display:inline-block;  "  type="number"/>  
                                 @Html.Raw("X<sup>"+i+"</sup>");
                             }
                             else{
-                                <input asp-for="medidor.CalibrationParameters[i]"  style="text-align:right;max-width:50px;display:inline-block; border-color:transparent; "  type="number"/>  
+                                <input asp-for="medidor.CalibrationParameters[i]"  style="text-align:right;max-width:50px;display:inline-block;  "  type="number"/>  
                             }
                         }
                         else
                         {
-                            <input asp-for="medidor.CalibrationParameters[i]"  style="text-align:right;max-width:50px;display:inline-block; border-color:transparent; " type="number"/>  
+                            <input asp-for="medidor.CalibrationParameters[i]"  style="text-align:right;max-width:50px;display:inline-block;  " type="number"/>  
                         }
                     </div>
                 }

@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
+using CtrlP.Models;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -13,24 +15,62 @@ namespace CtrlP
 {
     public class Program
     {
-        public static string Baseurl = "http://10.10.10.211:2005";
+        public static string ServerIp = "localhost";
+        public static string ServerProtocol = "http://";
+        public static string ServerPort = "2005";
+        public static string Baseurl = ServerProtocol+ServerIp+ServerPort;
+        public static List<string> endereco = new List<string>();
+        public static List<string> ips = new List<string>();
         public static void Main(string[] args)
         {
-             var nfInfo = new System.Globalization.CultureInfo("en-US", false)
+
+            try
             {
-                NumberFormat =
+                List<string> url = new List<string>();
+                string hostName = Dns.GetHostName(); // Retrive the Name of HOST  
+                Console.WriteLine(hostName);  
+                // Get the IP  
+                foreach(var ip in Dns.GetHostEntry(hostName).AddressList){
+                    if(ip.ToString().Contains("."))
+                    {
+                        ips.Add(ip.ToString());
+                        Console.WriteLine("My IP Address is :"+ip); 
+                        var temp = ip.ToString();
+                        url.Add("http://"+temp+":5000");
+                    }
+                }  
+                endereco = url;
+                Baseurl = DetectaLPTws.LptWsAddress();
+                /* if(args!=null && args.Count()>0 && args[0].Contains("http://") && args[0].Contains(":2005") )
                 {
-                    NumberDecimalSeparator = "."
+                    Baseurl = args[0];
                 }
-            };
-            Thread.CurrentThread.CurrentCulture = nfInfo;
-            Thread.CurrentThread.CurrentUICulture = nfInfo;
-            //System.Diagnostics.Process.Start(@"C:\Users\thiag\DOTNET\GITHUB\SistemaDeOperacaoDoPlasma\LPT\bin\Debug\netcoreapp2.2\win-x64\LPT.exe","http://10.10.10.211:2005");
-            CreateWebHostBuilder(args).Build().Run();
+                else {
+                    Console.WriteLine(args.ToString());
+                    throw(new Exception("Precisa de argumento string: http://enderecoDataBase:2005"));
+                }*/
+                var nfInfo = new System.Globalization.CultureInfo("en-US", false)
+                {
+                    NumberFormat =
+                    {
+                        NumberDecimalSeparator = "."
+                    }
+                };
+                Thread.CurrentThread.CurrentCulture = nfInfo;
+                Thread.CurrentThread.CurrentUICulture = nfInfo;
+                CreateWebHostBuilder(args).Build().Run();
+            }
+            catch (System.Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return;
+            }
+            
         }
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
-                .UseStartup<Startup>();
+                .UseStartup<Startup>()
+                .UseUrls(endereco.ToArray());
     }
 }

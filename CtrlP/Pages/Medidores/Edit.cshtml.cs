@@ -60,19 +60,20 @@ namespace CtrlP.Pages.Medidores
             }
         }
 
-        public ActionResult OnGet(string HWIP)
+        public ActionResult OnGet(int idx)
         {
-            if(HWIP.Length<10){
+            if(idx<0){
                return NotFound();
             }
 
             try
             {
-                client.Headers["Content-type"] = "application/json";
+                medidor = MedidoresModel.Medidores.ElementAt(idx);
+                /*client.Headers["Content-type"] = "application/json";
                 Stream data = client.OpenRead (HWIP+"/medidor/sensorsettings");
                 StreamReader reader = new StreamReader (data);
                 string s = reader.ReadToEnd();
-                medidor = (SensorSettings)JsonConvert.DeserializeObject(s,typeof(SensorSettings));
+                medidor = (SensorSettings)JsonConvert.DeserializeObject(s,typeof(SensorSettings));*/
                 string[] lista = {"Off","On","Calibrate"};
                 for(int id=0;id<lista.Count();id++){
                     if(id == medidor.State){
@@ -81,25 +82,24 @@ namespace CtrlP.Pages.Medidores
                 }
                 foreach(var item in GrandezasModel.grandezas){
                     if(item.IdGrandeza == medidor.OperationType){
-                        listaGrandezas.ElementAt(item.IdGrandeza).Selected=true;
+                        listaGrandezas.ElementAt(item.IdGrandeza-1).Selected=true;
                     }
                 }
-                data.Close ();
-                reader.Close ();
             }
             catch (System.Exception ex)
             {
                 Console.WriteLine(ex.Message);
                 medidor = new SensorSettings();
-            }
-
-            if(HWIP.Length<10)
-            {
                 return NotFound();
             }
 
             Page_Title = "Editar Medidor";
             return Page();
+        
+        }
+
+        public ActionResult OnPostSave()  {
+            return  OnPost();
         }
         public ActionResult OnPost()  
         {  
@@ -128,6 +128,7 @@ namespace CtrlP.Pages.Medidores
                 dataStream.Close(); 
                 HttpWebResponse response = (HttpWebResponse)request.GetResponse();
                 string returnString = response.StatusCode.ToString(); 
+                MedidoresModel.UpdateMedidores(MedidoresModel.Medidores);
             }
             catch (System.Exception ex)
             {

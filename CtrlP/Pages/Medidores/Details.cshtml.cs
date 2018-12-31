@@ -31,48 +31,56 @@ namespace CtrlP.Pages.Medidores
         public static string Page_Title = "Detalhes do Medidor ";
 
         public DetailsModel(){
-            
-        }
-
-        public ActionResult OnGet(string HWIP)
-        {
-            try
-            {
-                client.Headers["Content-type"] = "application/json";
-                Stream data = client.OpenRead (HWIP+"/medidor/sensorsettings");
-                StreamReader reader = new StreamReader (data);
-                string s = reader.ReadToEnd();
-                medidor = (SensorSettings)JsonConvert.DeserializeObject(s,typeof(SensorSettings));
-                bool isSelected= false;
-                new GrandezasModel();
+            if(listaOpStates.Count==0){
                 string[] lista = {"Off","On","Calibrate"};
                 for(int id=0;id<lista.Count();id++){
-                    isSelected = false;
-                    if(id == medidor.State){
-                        isSelected = true;
-                    }
                     listaOpStates.Add(new SelectListItem
                     {
                         Text = lista[id],
                         Value = id.ToString(),
-                        Selected = isSelected
+                        Selected = false
                     });
                 }
-                isSelected=false;
+            }
+            new GrandezasModel();
+            if(listaGrandezas.Count==0){
                 foreach(var item in GrandezasModel.grandezas){
-                    isSelected = false;
-                    if(item.IdGrandeza == medidor.OperationType){
-                        isSelected = true;
-                    }
                     listaGrandezas.Add(new SelectListItem
                     {
                         Text = item.Descricao,
                         Value = item.IdGrandeza.ToString(), 
-                        Selected = isSelected
+                        Selected = false
                     });
                 }
-                data.Close ();
-                reader.Close ();
+            }
+        }
+
+        public ActionResult OnGet(int idx)
+        {
+            if(idx<0){
+               return NotFound();
+            }
+
+            try
+            {
+                
+                medidor = MedidoresModel.Medidores.ElementAt(idx);
+                /*client.Headers["Content-type"] = "application/json";
+                Stream data = client.OpenRead (HWIP+"/medidor/sensorsettings");
+                StreamReader reader = new StreamReader (data);
+                string s = reader.ReadToEnd();
+                medidor = (SensorSettings)JsonConvert.DeserializeObject(s,typeof(SensorSettings));*/
+                string[] lista = {"Off","On","Calibrate"};
+                for(int id=0;id<lista.Count();id++){
+                    if(id == medidor.State){
+                        listaOpStates.ElementAt(id).Selected=true;
+                    }
+                }
+                foreach(var item in GrandezasModel.grandezas){
+                    if(item.IdGrandeza == medidor.OperationType){
+                        listaGrandezas.ElementAt(item.IdGrandeza-1).Selected=true;
+                    }
+                }
             }
             catch (System.Exception ex)
             {

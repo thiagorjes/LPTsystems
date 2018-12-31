@@ -10,7 +10,7 @@
             "request": "launch",
             "preLaunchTask": "build",
             "program": "${workspaceFolder}/bin/Debug/netcoreapp2.2/LPT.dll",
-            "args": ["http://10.10.10.211:2005","http://localhost:5000"],
+            "args": ["http://10.10.10.211:5000"],
             "cwd": "${workspaceFolder}",
             "stopAtEntry": false,
             "internalConsoleOptions": "openOnSessionStart",

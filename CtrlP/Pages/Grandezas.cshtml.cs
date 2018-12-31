@@ -22,7 +22,7 @@ namespace CtrlP.Pages
 {
     public class GrandezasModel : PageModel
     {
-        public static List<Grandeza> grandezas;
+        public static List<Grandeza> grandezas=new List<Grandeza>();
         private static readonly WebClient client = new WebClient();  
         static DataContractJsonSerializer ser = new DataContractJsonSerializer(typeof(List<Grandeza>));
         public static string Page_Title = "Gerencie Grandezas ";

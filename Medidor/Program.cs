@@ -29,7 +29,7 @@ namespace Medidor
         public static Thread longThread = new Thread(() => EnviaDados());
         private static readonly WebClient client = new WebClient();        
         public static string TipoGrandeza = "";
-        public static string endereco;
+        public static List<string> endereco = new List<string>();
         public static void Main(string[] args)
         {
             try
@@ -41,20 +41,41 @@ namespace Medidor
                 sensorSettings =(SensorSettings) JsonConvert.DeserializeObject(jsonstring,typeof(SensorSettings));
                 sensorSettings.State=0;
                 operationStateRepo.Update(new OperationState ( ){State=0});
-                if(args[0].Contains("http://")){
-                    endereco = args[0];
-                }
-                else {
-                    Console.WriteLine(args.ToString());
-                }
+                List<string> url = new List<string>();
+                string hostName = Dns.GetHostName(); // Retrive the Name of HOST  
+                Console.WriteLine(hostName);  
+                // Get the IP  
+                foreach(var ip in Dns.GetHostEntry(hostName).AddressList){
+                    if(ip.ToString().Contains('.'))
+                    {
+                       // Console.WriteLine("My IP Address is :"+ip); 
+                        var temp = (ip.ToString().Contains(":")?"["+ip+"]":ip.ToString());
+                        url.Add("http://"+temp+":1000");
+                    }
+                }  
+                endereco = url;
+                sensorSettings.HWIP=endereco[0];
             }
             catch (System.Exception ex)
             {
-                endereco = "http://localhost:1000";
+                List<string> url = new List<string>();
+                string hostName = Dns.GetHostName(); // Retrive the Name of HOST  
+                Console.WriteLine(hostName);  
+                // Get the IP  
+                foreach(var ip in Dns.GetHostEntry(hostName).AddressList){
+                   if(ip.ToString().Contains('.'))
+                    {
+                        //Console.WriteLine("My IP Address is :"+ip); 
+                        var temp = (ip.ToString().Contains(":")?"["+ip+"]":ip.ToString());
+                        url.Add("http://"+temp+":1000");
+                    }
+                }  
+                endereco = url;
+                sensorSettings.HWIP = endereco[0];
                 sensorSettings.OperationType=1;
                 sensorSettings.State = 0;
                 sensorSettings.ServersIP="http://localhost:2005";
-                sensorSettings.HWIP=endereco;
+                sensorSettings.HWIP=endereco.First();
                 System.Console.Write(ex.Message);
             }
             
@@ -151,6 +172,6 @@ namespace Medidor
         }
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
-                .UseStartup<Startup>().UseUrls(sensorSettings.HWIP);
+                .UseStartup<Startup>().UseUrls(endereco.ToArray());
     }
 }

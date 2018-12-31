@@ -40,7 +40,7 @@ namespace LPT.Services
                     }
                     else
                     {
-                        string valorLido = ((DadoColetado)p).ValorLido.ToString();
+                        string valorLido = ((DadoColetado)p).ValorLido.ToString()+DateTime.Now.Second;
                         string medidor = ((DadoColetado)p).Hwid;
                         string tipoMedida = ((Grandeza)new GrandezaRepository(new LPTContext()).Read(((DadoColetado)p).TipoDeGrandeza)).Descricao;
                             Program.connection.InvokeAsync<string>("SendMessage", medidor,tipoMedida, valorLido).ContinueWith(task1 => {
