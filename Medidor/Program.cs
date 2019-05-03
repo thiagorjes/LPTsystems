@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Net.NetworkInformation;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Runtime.Serialization.Json;
@@ -44,15 +45,29 @@ namespace Medidor
                 List<string> url = new List<string>();
                 string hostName = Dns.GetHostName(); // Retrive the Name of HOST  
                 Console.WriteLine(hostName);  
-                // Get the IP  
-                foreach(var ip in Dns.GetHostEntry(hostName).AddressList){
+                // nao efetivo se a rede nao possuir um roteador caseiro que atualiza o dns dinamicamente
+                // ou seja, so funciona se o raspberry estiver inserido no dns da rede
+                /* foreach(var ip in Dns.GetHostEntry(hostName).AddressList){
                     if(ip.ToString().Contains('.'))
                     {
                        // Console.WriteLine("My IP Address is :"+ip); 
                         var temp = (ip.ToString().Contains(":")?"["+ip+"]":ip.ToString());
                         url.Add("http://"+temp+":1000");
                     }
-                }  
+                }   */
+
+                //Get IP.  Funciona sempre
+                foreach(NetworkInterface netif in NetworkInterface.GetAllNetworkInterfaces())
+                {
+                    if(netif.Name != "lo")
+                    {
+                        IPInterfaceProperties prop = netif.GetIPProperties();
+                        var listaIps = (from p in prop.UnicastAddresses where !p.Address.ToString().Contains(":") select "http://"+p.Address.ToString()+":1000").Distinct().ToList();
+                        url = listaIps;
+                    }
+                }
+                //fim do Get Ip
+                
                 endereco = url;
                 sensorSettings.HWIP=endereco[0];
             }
@@ -62,14 +77,15 @@ namespace Medidor
                 string hostName = Dns.GetHostName(); // Retrive the Name of HOST  
                 Console.WriteLine(hostName);  
                 // Get the IP  
-                foreach(var ip in Dns.GetHostEntry(hostName).AddressList){
-                   if(ip.ToString().Contains('.'))
+                foreach(NetworkInterface netif in NetworkInterface.GetAllNetworkInterfaces())
+                {
+                    if(netif.Name != "lo")
                     {
-                        //Console.WriteLine("My IP Address is :"+ip); 
-                        var temp = (ip.ToString().Contains(":")?"["+ip+"]":ip.ToString());
-                        url.Add("http://"+temp+":1000");
+                        IPInterfaceProperties prop = netif.GetIPProperties();
+                        var listaIps = (from p in prop.UnicastAddresses where !p.Address.ToString().Contains(":") select "http://"+p.Address.ToString()+":1000").Distinct().ToList();
+                        url = listaIps;
                     }
-                }  
+                }
                 endereco = url;
                 sensorSettings.HWIP = endereco[0];
                 sensorSettings.OperationType=1;
