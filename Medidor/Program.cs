@@ -64,6 +64,12 @@ namespace Medidor
                         IPInterfaceProperties prop = netif.GetIPProperties();
                         var listaIps = (from p in prop.UnicastAddresses where !p.Address.ToString().Contains(":") select "http://"+p.Address.ToString()+":1000").Distinct().ToList();
                         url = listaIps;
+			Console.WriteLine("quase no for");
+                        foreach( var p in url)
+                        {
+                                Console.WriteLine(p);
+                        }
+                        Console.WriteLine("sai do for");
                     }
                 }
                 //fim do Get Ip
@@ -84,8 +90,15 @@ namespace Medidor
                         IPInterfaceProperties prop = netif.GetIPProperties();
                         var listaIps = (from p in prop.UnicastAddresses where !p.Address.ToString().Contains(":") select "http://"+p.Address.ToString()+":1000").Distinct().ToList();
                         url = listaIps;
-                    }
+			Console.WriteLine("quase no for");
+                        foreach( var p in url)
+                        {
+                                Console.WriteLine(p);
+                        }
+                        Console.WriteLine("sai do for");
+		    }		
                 }
+		sensorSettings = new SensorSettings();
                 endereco = url;
                 sensorSettings.HWIP = endereco[0];
                 sensorSettings.OperationType=1;
