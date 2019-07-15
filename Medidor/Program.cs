@@ -59,7 +59,7 @@ namespace Medidor
                 //Get IP.  Funciona sempre
                 foreach(NetworkInterface netif in NetworkInterface.GetAllNetworkInterfaces())
                 {
-                    if(netif.Name != "lo")
+                    if(netif.Name != "lo" && netif.Name != "wlan0"  )
                     {
                         IPInterfaceProperties prop = netif.GetIPProperties();
                         var listaIps = (from p in prop.UnicastAddresses where !p.Address.ToString().Contains(":") select "http://"+p.Address.ToString()+":1000").Distinct().ToList();
